@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Solution 1: Sieve of Eratosthenes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../static/css/virmedica.css"
+          th:href="@{/css/virmedica.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <!--suppress CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag -->
+    <div class="jumbotron">
+
+        <section>
+            <div>
+                <a class="internalNav" href="/">Return to Index</a>
+            </div>
+            <h2>Solution 1: Sieve of Eratosthenes</h2>
+            <div>based on <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">Sieve of
+                Eratosthenes</a></div>
+        </section>
+        <section>
+            <div>Please enter the number to which prime numbers should be calculated</div>
+        </section>
+        <section>
+            <div>
+                <!--suppress HtmlUnknownTarget -->
+                <form action="/solution1" method="post">
+                    <label for="lastNumber">Search for primes till number</label>
+                    <input id="lastNumber" type="text" name="lastNumber"/>
+                    <input type="submit" value="Calculate"/>
+                </form>
+            </div>
+        </section>
+        <section th:if="${null != result}">
+            <h3>Submitted Argument:</h3>
+            <div th:text="'Submitted Number: ' + ${lastNumber}"/>
+        </section>
+        <section th:if="${null != result}">
+            <table>
+                <tr>
+                    <th>Messages</th>
+                </tr>
+                <tr th:each="message :${result.messages}">
+                    <td th:text="${message}"/>
+                </tr>
+            </table>
+            <!-- http://stackoverflow.com/questions/17812372/in-thymeleaf-how-can-write-theach-to-combine-rows-and-columns-->
+            <table>
+                <tr>
+                    <th>Primes</th>
+                </tr>
+                <tr th:each="data, row: ${result.primes}" th:with="numList=${ {9,8,7,6,5,4,3,2,1,0} }"
+                    th:if="${row.count % 10 == 0 or row.last}">
+                    <td th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})"
+                        th:if="${row.count % 10 == 0}" th:text="${result.primes[dataIndex]}">data
+                    </td>
+                    <td th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})"
+                        th:if="${row.last} and ${row.count % 10 != 0} and ${num &lt; row.count % 10}"
+                        th:text="${result.primes[dataIndex]}">data
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>
