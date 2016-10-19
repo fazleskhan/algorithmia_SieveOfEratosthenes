@@ -13,7 +13,7 @@ public class HelpCommand extends Command {
 
     private static final Logger logger = Logger.getLogger(HelpCommand.class.getName());
 
-    protected HelpCommand() {
+    HelpCommand() {
         super(0, 1, HELP_TEXT);
     }
 
@@ -21,13 +21,13 @@ public class HelpCommand extends Command {
     protected String[] myWork(final String[] args) {
         final ArrayList<String> messages = new ArrayList<>();
         if (args.length == 0) {
-            logInfo(String.format(this.getHelp()), messages);
+            logInfo(this.getHelp(), messages);
         } else {
             final Command command = Command.factory(args[0]);
             if (null == command) {
                 logWarning(String.format(COMMAND_NOT_FOUND_TEXT, args[0]), messages);
             } else {
-                logInfo(String.format(command.getHelp()), messages);
+                logInfo(command.getHelp(), messages);
             }
         }
         return messages.toArray(new String[0]);

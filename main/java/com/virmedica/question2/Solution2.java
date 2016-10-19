@@ -3,8 +3,9 @@ package com.virmedica.question2;
 import com.virmedica.main.Command;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Logger;
+
+import static com.virmedica.shared.Helper.initPrimes;
 
 /**
  * Make the program from #1 multithreaded, with max number of threads specified on the command line.  Output both the
@@ -18,7 +19,7 @@ public class Solution2 extends Command {
     private static final int START_NUMBER = 1;
     private static final String START_TIMESTAMP_TEXT = "Multithreaded Sieve took %s ms";
     private static final int FIRST_PRIME_NUMBER = 2;
-    private static final String COMMA_DELIMITAR = ", ";
+    private static final String COMMA_DELIMITER = ", ";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
 
@@ -60,7 +61,7 @@ public class Solution2 extends Command {
         final StringBuilder sb = new StringBuilder();
         for (int k = 0; k < primes.length; k++) {
             if (primes[k]) {
-                sb.append(k).append(COMMA_DELIMITAR);
+                sb.append(k).append(COMMA_DELIMITER);
                 primeCount++;
             }
         }
@@ -68,21 +69,12 @@ public class Solution2 extends Command {
         logInfo(String.format(NUMBER_PRIMES_TEXT, primeCount), messages);
 
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return (String[]) messages.toArray(new String[0]);
+        return messages.toArray(new String[0]);
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {
         logger.info(message);
         messages.add(message);
-    }
-
-
-    private boolean[] initPrimes(final int end) {
-        final boolean[] primes = new boolean[end];
-        Arrays.fill(primes, true);
-        primes[0] = false;
-        primes[1] = false;
-        return primes;
     }
 
     /**

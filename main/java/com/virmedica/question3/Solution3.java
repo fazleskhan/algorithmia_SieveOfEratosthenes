@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.logging.Logger;
 
 /**
  * Add a GUI to display the results as they are produced in #1 or #2.
@@ -23,8 +22,6 @@ public class Solution3 extends HttpServlet {
     private static final String INPUT_ECHO_MESSAGE = "The supplied input was: %s";
     private static final String SPACE = " ";
     private static final String COMMAND_NOT_FOUND_MESSAGE = "Command not found: %s";
-
-    private static final Logger logger = Logger.getLogger(Solution3.class.getName());
 
     public void init() {
     }
@@ -62,10 +59,10 @@ public class Solution3 extends HttpServlet {
             } else {
                 final String[] args = Arrays.copyOfRange(inputs, 1, inputs.length);
                 final String[] messages = command.doWork(args);
-                for (int i = 0; i < messages.length; i++) {
+                for (String message : messages) {
                     out.println("<tr>");
                     out.println("<td>");
-                    out.println(messages[i]);
+                    out.println(message);
                     out.println("</td>");
                     out.println("</tr>");
                 }
@@ -74,10 +71,6 @@ public class Solution3 extends HttpServlet {
         }
         out.println("<button onclick=\"window.location.href='/'\">Back</button>");
         out.println("</body></html>");
-
-    }
-
-    public void destory() {
 
     }
 }

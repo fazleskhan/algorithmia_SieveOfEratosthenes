@@ -41,7 +41,7 @@ public class Console {
         while (running) {
             printOut(PROMPT);
             final String s = scanner.nextLine().trim();
-            if (s == null || s.isEmpty()) {
+            if (s.isEmpty()) {
                 logger.warning(NO_INPUT_MESSAGE);
                 continue;
             }

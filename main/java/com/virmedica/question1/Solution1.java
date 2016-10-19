@@ -3,8 +3,9 @@ package com.virmedica.question1;
 import com.virmedica.main.Command;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Logger;
+
+import static com.virmedica.shared.Helper.initPrimes;
 
 /**
  * Write a java program that calculates all prime numbers between 1 and N, with N specified on the command line.
@@ -35,13 +36,10 @@ public class Solution1 extends Command {
         final int lastNumber = Integer.parseInt(args[0]);
         logInfo(START_SEIVE, messages);
         final long start = System.nanoTime();
-        final boolean[] primes = new boolean[lastNumber];
-        Arrays.fill(primes, true);
-        //0 and 1 are not primes numbers
-        primes[0] = false;
-        primes[1] = false;
+        final boolean[] primes = initPrimes(lastNumber);
+
         for (int i = FIRST_PRIME_NUMBER; i < primes.length; i++) {
-            //if the number is prime (which 2 is) go iterate through and set mulitples of the value to false
+            //if the number is prime (which 2 is) go iterate through and set multiples of the value to false
             if (primes[i]) {
                 for (int j = FIRST_PRIME_NUMBER; i * j < primes.length; j++) {
                     primes[i * j] = false;
@@ -60,7 +58,7 @@ public class Solution1 extends Command {
         logInfo(sb.toString(), messages);
         logInfo(String.format(NUMBER_PRIMES_TEXT, primeCount), messages);
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return (String[]) messages.toArray(new String[0]);
+        return messages.toArray(new String[0]);
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {

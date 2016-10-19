@@ -8,7 +8,7 @@ import java.util.logging.Logger;
  * The user can then type on of 4 commands with 1 or two inputs
  * inputs are validated and the target solution is run
  */
-public class Main {
+class Main {
 
     private static final String COMMAND_LINE_ARGS_NOT_SUPPORTED_MESSAGE
             = "Commandline arguments are not supported. Please enter commands in the console prompt. Type Help on the console prompt for more information";

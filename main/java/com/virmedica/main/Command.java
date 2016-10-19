@@ -8,12 +8,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
-/**
- * Created by Fazle Khan on 10/18/2016.
- */
 public abstract class Command {
 
-    private static final String INCORRECT_NUMBER_OF_ARGUMENTS_MESSAGE = "Incorrect number of arguments found.%n Expected betweem %s and %s %n Found %s %n %s ";
+    private static final String INCORRECT_NUMBER_OF_ARGUMENTS_MESSAGE = "Incorrect number of arguments found.%n Expected between %s and %s %n Found %s %n %s ";
     private static final String UNRECOGNIZED_COMMAND_MESSAGE = "%nUnrecognized command %s %n";
 
     private static final HashMap<Action, Command> commands;
@@ -39,7 +36,7 @@ public abstract class Command {
         this.helpText = helpText;
     }
 
-    public static Command factory(Action action) {
+    private static Command factory(Action action) {
         return commands.get(action);
     }
 
@@ -65,7 +62,7 @@ public abstract class Command {
 
     }
 
-    public String getHelp() {
+    String getHelp() {
         return helpText;
     }
 
