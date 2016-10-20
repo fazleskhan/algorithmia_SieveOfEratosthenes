@@ -45,6 +45,7 @@ class IndexController {
             for(int i = 1; i < result.getMessages().length; i++){
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
+            model.addAttribute("primes",Arrays.toString(result.getPrimes()));
         }
         return "solution1";
     }
@@ -63,6 +64,7 @@ class IndexController {
             for(int i = 1; i < result.getMessages().length; i++){
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
+            model.addAttribute("primes",Arrays.toString(result.getPrimes()));
         }
         return "solution2";
     }
@@ -81,6 +83,7 @@ class IndexController {
             for(int i = 1; i < result.getMessages().length; i++){
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
+            model.addAttribute("primes",Arrays.toString(result.getPrimes()));
         }
         return "solution2";
     }
