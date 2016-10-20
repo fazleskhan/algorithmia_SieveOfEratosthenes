@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
-
 import static org.easymock.EasyMock.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotEquals;
 
 //import org.junit.Assert;
 
@@ -22,7 +22,7 @@ public class SingleThreadedSieveTest {
     private Helper mock;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         mock = createMock(Helper.class);
         target = new SingleThreadedSieve(mock);
     }
@@ -32,8 +32,8 @@ public class SingleThreadedSieveTest {
         EasyMock.expect(mock.initPrimes(0)).andReturn(new boolean[0]);
         replay(mock);
         SieveResult result = target.calcPrimes(0);
-        assertNotEquals(0,result.getMessages().length);
-        assertArrayEquals(new Integer[0],result.getPrimes());
+        assertNotEquals(0, result.getMessages().length);
+        assertArrayEquals(new Integer[0], result.getPrimes());
         verify(mock);
     }
 
@@ -42,37 +42,38 @@ public class SingleThreadedSieveTest {
         EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false});
         replay(mock);
         SieveResult result = target.calcPrimes(1);
-        assertNotEquals(0,result.getMessages().length);
-        assertArrayEquals(new Integer[0],result.getPrimes());
+        assertNotEquals(0, result.getMessages().length);
+        assertArrayEquals(new Integer[0], result.getPrimes());
         verify(mock);
     }
 
     @Test
     public void calcPrimesTwoLength() throws Exception {
-        EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false,false});
+        EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false, false});
         replay(mock);
         SieveResult result = target.calcPrimes(1);
-        assertNotEquals(0,result.getMessages().length);
-        assertArrayEquals(new Integer[0],result.getPrimes());
+        assertNotEquals(0, result.getMessages().length);
+        assertArrayEquals(new Integer[0], result.getPrimes());
         verify(mock);
     }
 
     @Test
     public void calcPrimesThreeLength() throws Exception {
-        EasyMock.expect(mock.initPrimes(3)).andReturn(new boolean[]{false,false,true});
+        EasyMock.expect(mock.initPrimes(3)).andReturn(new boolean[]{false, false, true});
         replay(mock);
         SieveResult result = target.calcPrimes(3);
-        assertNotEquals(0,result.getMessages().length);
-        assertArrayEquals(new Integer[]{2},result.getPrimes());
+        assertNotEquals(0, result.getMessages().length);
+        assertArrayEquals(new Integer[]{2}, result.getPrimes());
         verify(mock);
     }
+
     @Test
     public void calcPrimesTenLength() throws Exception {
-        EasyMock.expect(mock.initPrimes(10)).andReturn(new boolean[]{false,false,true,true,true,true,true,true,true,true});
+        EasyMock.expect(mock.initPrimes(10)).andReturn(new boolean[]{false, false, true, true, true, true, true, true, true, true});
         replay(mock);
         SieveResult result = target.calcPrimes(10);
-        assertNotEquals(0,result.getMessages().length);
-        assertArrayEquals(new Integer[]{2,3,5,7},result.getPrimes());
+        assertNotEquals(0, result.getMessages().length);
+        assertArrayEquals(new Integer[]{2, 3, 5, 7}, result.getPrimes());
         verify(mock);
     }
 }

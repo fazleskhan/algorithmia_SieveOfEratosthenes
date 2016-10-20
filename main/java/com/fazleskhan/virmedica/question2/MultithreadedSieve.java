@@ -21,7 +21,7 @@ public class MultithreadedSieve {
     private final Helper helper;
 
     @Autowired
-    public MultithreadedSieve(Helper helper){
+    public MultithreadedSieve(Helper helper) {
         this.helper = helper;
     }
 
@@ -59,11 +59,15 @@ public class MultithreadedSieve {
         logInfo(String.format(NUMBER_PRIMES_TEXT, primesCollector.size()), messages);
 
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return new SieveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
+        return new SieveResult(primesCollector.toArray(new Integer[0]), messages.toArray(new String[0]));
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {
-         messages.add(message);
+        messages.add(message);
+    }
+
+    private Helper getHelper() {
+        return this.helper;
     }
 
     /**
@@ -92,9 +96,5 @@ public class MultithreadedSieve {
                 }
             }
         }
-    }
-
-    private Helper getHelper(){
-        return this.helper;
     }
 }

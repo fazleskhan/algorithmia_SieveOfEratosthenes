@@ -9,7 +9,7 @@ public class HelperTest {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(0);
-        Assert.assertArrayEquals(new boolean[0],result);
+        Assert.assertArrayEquals(new boolean[0], result);
     }
 
     @Test
@@ -17,7 +17,7 @@ public class HelperTest {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(1);
-        Assert.assertArrayEquals(new boolean[]{false},result);
+        Assert.assertArrayEquals(new boolean[]{false}, result);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class HelperTest {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(2);
-        Assert.assertArrayEquals(new boolean[]{false,false},result);
+        Assert.assertArrayEquals(new boolean[]{false, false}, result);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class HelperTest {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(3);
-        Assert.assertArrayEquals(new boolean[]{false,false,true},result);
+        Assert.assertArrayEquals(new boolean[]{false, false, true}, result);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class HelperTest {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(10);
-        Assert.assertArrayEquals(new boolean[]{false,false,true,true,true,true,true,true,true,true},result);
+        Assert.assertArrayEquals(new boolean[]{false, false, true, true, true, true, true, true, true, true}, result);
     }
 
 }

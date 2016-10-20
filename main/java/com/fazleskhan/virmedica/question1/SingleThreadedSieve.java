@@ -18,7 +18,7 @@ public class SingleThreadedSieve {
 
     private final Helper helper;
 
-    public SingleThreadedSieve(Helper helper){
+    public SingleThreadedSieve(Helper helper) {
         this.helper = helper;
     }
 
@@ -46,14 +46,14 @@ public class SingleThreadedSieve {
         }
         logInfo(String.format(NUMBER_PRIMES_TEXT, primesCollector.size()), messages);
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return new SieveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
+        return new SieveResult(primesCollector.toArray(new Integer[0]), messages.toArray(new String[0]));
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {
         messages.add(message);
     }
 
-    private Helper getHelper(){
+    private Helper getHelper() {
         return this.helper;
     }
 }

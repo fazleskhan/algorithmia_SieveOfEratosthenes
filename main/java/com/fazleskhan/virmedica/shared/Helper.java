@@ -7,7 +7,7 @@ import java.util.Arrays;
 @Service
 public class Helper {
 
-    public Helper(){
+    public Helper() {
         //default constructor
     }
 

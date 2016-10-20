@@ -18,12 +18,12 @@ class IndexController {
 
     private final SingleThreadedSieve singleThreadedSieve;
     private final MultithreadedSieve multithreadedSieve;
-    private final  FunctionalMultithreadedSieve functionalMultithreadedSieve;
+    private final FunctionalMultithreadedSieve functionalMultithreadedSieve;
 
     @Autowired
     public IndexController(SingleThreadedSieve singleThreadedSieve,
                            MultithreadedSieve multithreadedSieve,
-                           FunctionalMultithreadedSieve functionalMultithreadedSieve){
+                           FunctionalMultithreadedSieve functionalMultithreadedSieve) {
         this.singleThreadedSieve = singleThreadedSieve;
         this.multithreadedSieve = multithreadedSieve;
         this.functionalMultithreadedSieve = functionalMultithreadedSieve;
@@ -31,71 +31,73 @@ class IndexController {
 
     @SuppressWarnings({"SameReturnValue", "unused"})
     @RequestMapping("/")
-    String index(){
+    String index() {
         return "index";
     }
 
     @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution1")
-    public String solution1(@RequestParam(value="lastNumber", required=false, defaultValue="") String lastNumber, Model model) {
+    public String solution1(@RequestParam(value = "lastNumber", required = false, defaultValue = "") String lastNumber, Model model) {
         model.addAttribute("lastNumber", lastNumber);
-        if( !"".equals(lastNumber)){
+        if (!"".equals(lastNumber)) {
             final int arg = Integer.parseInt(lastNumber);
             final SieveResult result = getSingleThreadedSieve().calcPrimes(arg);
-            for(int i = 1; i < result.getMessages().length; i++){
+            for (int i = 1; i < result.getMessages().length; i++) {
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
-            model.addAttribute("primes",Arrays.toString(result.getPrimes()));
+            model.addAttribute("primes", Arrays.toString(result.getPrimes()));
         }
         return "solution1";
     }
 
     @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution2")
-    public String solution2a(@RequestParam(value="lastNumber", required=false, defaultValue="") String lastNumber,
-                            @RequestParam(value="threadCount", required=false, defaultValue="") String threadCount,
-                            Model model) {
+    public String solution2a(@RequestParam(value = "lastNumber", required = false, defaultValue = "") String lastNumber,
+                             @RequestParam(value = "threadCount", required = false, defaultValue = "") String threadCount,
+                             Model model) {
         model.addAttribute("lastNumber", lastNumber);
         model.addAttribute("threadCount", threadCount);
-        if( !"".equals(lastNumber)){
+        if (!"".equals(lastNumber)) {
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final SieveResult result = getMultithreadedSieve().calcPrimes(arg0,arg1);
-            for(int i = 1; i < result.getMessages().length; i++){
+            final SieveResult result = getMultithreadedSieve().calcPrimes(arg0, arg1);
+            for (int i = 1; i < result.getMessages().length; i++) {
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
-            model.addAttribute("primes",Arrays.toString(result.getPrimes()));
+            model.addAttribute("primes", Arrays.toString(result.getPrimes()));
         }
         return "solution2";
     }
 
     @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution2a")
-    public String solution2(@RequestParam(value="lastNumber", required=false, defaultValue="") String lastNumber,
-                            @RequestParam(value="threadCount", required=false, defaultValue="") String threadCount,
+    public String solution2(@RequestParam(value = "lastNumber", required = false, defaultValue = "") String lastNumber,
+                            @RequestParam(value = "threadCount", required = false, defaultValue = "") String threadCount,
                             Model model) {
         model.addAttribute("lastNumber", lastNumber);
         model.addAttribute("threadCount", threadCount);
-        if( !"".equals(lastNumber)){
+        if (!"".equals(lastNumber)) {
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final SieveResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0,arg1);
-            for(int i = 1; i < result.getMessages().length; i++){
+            final SieveResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0, arg1);
+            for (int i = 1; i < result.getMessages().length; i++) {
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
-            model.addAttribute("primes",Arrays.toString(result.getPrimes()));
+            model.addAttribute("primes", Arrays.toString(result.getPrimes()));
         }
         return "solution2";
     }
 
 
-    private SingleThreadedSieve getSingleThreadedSieve(){
+    private SingleThreadedSieve getSingleThreadedSieve() {
         return this.singleThreadedSieve;
     }
 
-    private MultithreadedSieve getMultithreadedSieve(){
+    private MultithreadedSieve getMultithreadedSieve() {
         return this.multithreadedSieve;
     }
 
-    private FunctionalMultithreadedSieve getFunctionalMultithreadedSieve(){ return this.functionalMultithreadedSieve; }
+    private FunctionalMultithreadedSieve getFunctionalMultithreadedSieve() {
+        return this.functionalMultithreadedSieve;
+    }
 }

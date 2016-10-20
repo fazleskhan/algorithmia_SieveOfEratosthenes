@@ -18,13 +18,13 @@ public class SieveResultTest {
     @Test
     public void getPrimes() throws Exception {
         Integer[] result = target.getPrimes();
-        Assert.assertArrayEquals(new Integer[]{1,2,3},result);
+        Assert.assertArrayEquals(new Integer[]{1, 2, 3}, result);
     }
 
     @Test
     public void getMessages() throws Exception {
         String[] result = target.getMessages();
-        Assert.assertArrayEquals(new String[]{"a","b","c"},result);
+        Assert.assertArrayEquals(new String[]{"a", "b", "c"}, result);
     }
 
 }

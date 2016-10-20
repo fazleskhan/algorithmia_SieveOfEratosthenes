@@ -23,36 +23,8 @@ public class FunctionalMultithreadedSieve {
 
     private final Helper helper;
 
-    public FunctionalMultithreadedSieve(Helper helper){
+    public FunctionalMultithreadedSieve(Helper helper) {
         this.helper = helper;
-    }
-
-    private class Input implements Callable {
-        final boolean[] sharedPrimes;
-        final int threadNumber;
-        final int threadCount;
-
-        public Input(boolean[] sharedPrimes, int threadNumber, int threadCount){
-            this.sharedPrimes = sharedPrimes;
-            this.threadNumber = threadNumber;
-            this.threadCount = threadCount;
-        }
-
-        public Object call(){
-            for (int i = FIRST_PRIME_NUMBER + threadNumber; i < sharedPrimes.length; i = i + threadCount) {
-                //if the number is prime (which 2 is) go iterate through and set multiples of the value to false
-                if (sharedPrimes[i]) {
-                    for (int j = FIRST_PRIME_NUMBER; i * j < sharedPrimes.length; j++) {
-                        sharedPrimes[i * j] = false;
-                    }
-                }
-            }
-            return null;
-        }
-        @Override
-        public String toString(){
-            return String.valueOf(threadNumber);
-        }
     }
 
     public SieveResult calcPrimes(final int lastNumber, final int threadCount) {
@@ -64,7 +36,7 @@ public class FunctionalMultithreadedSieve {
         final boolean[] primes = getHelper().initPrimes(lastNumber);
 
         final List<Callable<Input>> inputs = new ArrayList<>();
-        for( int i = 0; i < threadCount; i++){
+        for (int i = 0; i < threadCount; i++) {
             inputs.add(new Input(primes, i, threadCount));
         }
 
@@ -73,26 +45,26 @@ public class FunctionalMultithreadedSieve {
             executor = Executors.newFixedThreadPool(threadCount);
             executor.invokeAll(inputs).stream().map(
                     future -> {
-                        try{
+                        try {
                             return future.get();
-                        }
-                        catch(Exception e){
+                        } catch (Exception e) {
                             throw new IllegalStateException(e);
                         }
                     }
             ).forEach(
-                    input -> {}
+                    input -> {
+                    }
             );
             executor.shutdown();
             executor.awaitTermination(5, TimeUnit.SECONDS);
-        }catch(InterruptedException ie){
+        } catch (InterruptedException ie) {
             throw new RuntimeException(ie);
-        }finally{
-            if( null != executor && !executor.isTerminated()){
+        } finally {
+            if (null != executor && !executor.isTerminated()) {
                 //noinspection ThrowFromFinallyBlock
                 throw new RuntimeException("cancel unfinished tasks");
             }
-            if( null != executor ){
+            if (null != executor) {
                 executor.shutdown();
             }
         }
@@ -106,14 +78,43 @@ public class FunctionalMultithreadedSieve {
         logInfo(String.format(NUMBER_PRIMES_TEXT, primesCollector.size()), messages);
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
 
-        return new SieveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
+        return new SieveResult(primesCollector.toArray(new Integer[0]), messages.toArray(new String[0]));
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {
         messages.add(message);
     }
 
-    private Helper getHelper(){
+    private Helper getHelper() {
         return this.helper;
+    }
+
+    private class Input implements Callable {
+        final boolean[] sharedPrimes;
+        final int threadNumber;
+        final int threadCount;
+
+        public Input(boolean[] sharedPrimes, int threadNumber, int threadCount) {
+            this.sharedPrimes = sharedPrimes;
+            this.threadNumber = threadNumber;
+            this.threadCount = threadCount;
+        }
+
+        public Object call() {
+            for (int i = FIRST_PRIME_NUMBER + threadNumber; i < sharedPrimes.length; i = i + threadCount) {
+                //if the number is prime (which 2 is) go iterate through and set multiples of the value to false
+                if (sharedPrimes[i]) {
+                    for (int j = FIRST_PRIME_NUMBER; i * j < sharedPrimes.length; j++) {
+                        sharedPrimes[i * j] = false;
+                    }
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(threadNumber);
+        }
     }
 }
