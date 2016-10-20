@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Arrays;
 
 @Controller
-public class IndexController {
+class IndexController {
 
     private final SingleThreadedSieve singleThreadedSieve;
     private final MultithreadedSieve multithreadedSieve;
@@ -23,11 +23,13 @@ public class IndexController {
         this.multithreadedSieve = multithreadedSieve;
     }
 
+    @SuppressWarnings({"SameReturnValue", "unused"})
     @RequestMapping("/")
     String index(){
         return "index";
     }
 
+    @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution1")
     public String solution1(@RequestParam(value="lastNumber", required=false, defaultValue="") String lastNumber, Model model) {
         model.addAttribute("lastNumber", lastNumber);
@@ -41,6 +43,7 @@ public class IndexController {
         return "solution1";
     }
 
+    @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution2")
     public String solution2(@RequestParam(value="lastNumber", required=false, defaultValue="") String lastNumber,
                             @RequestParam(value="threadCount", required=false, defaultValue="") String threadCount,

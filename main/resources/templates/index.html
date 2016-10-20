@@ -9,6 +9,7 @@
           th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
 
+    <!--suppress JSUnresolvedLibraryURL -->
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
 
@@ -22,8 +23,10 @@
         <h1>VirMedica Sample Solutions</h1>
 
         <ul>
-            <li><a href="/solution1">Solution to question 1</a></li>
-            <li><a href="/solution2">Solution to question 2</a></li>
+            <li><!--suppress HtmlUnknownTarget -->
+                <a href="/solution1">Solution to question 1</a></li>
+            <li><!--suppress HtmlUnknownTarget -->
+                <a href="/solution2">Solution to question 2</a></li>
         </ul>
     </div>
 </div>

@@ -3,9 +3,6 @@ package com.fazleskhan.virmedica.shared;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by Fazle Khan on 10/19/2016.
- */
 public class HelperTest {
     @Test
     public void initPrimesZeroLength() throws Exception {
