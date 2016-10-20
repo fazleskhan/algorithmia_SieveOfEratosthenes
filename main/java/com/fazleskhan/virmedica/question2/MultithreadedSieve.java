@@ -16,7 +16,6 @@ public class MultithreadedSieve {
     private static final int START_NUMBER = 1;
     private static final String START_TIMESTAMP_TEXT = "Multithreaded Sieve took %s ms";
     private static final int FIRST_PRIME_NUMBER = 2;
-    private static final String COMMA_DELIMITER = ", ";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
     private final Helper helper;

@@ -8,15 +8,11 @@ public class SeiveResultTest {
 
     private SeiveResult target;
 
-    private Integer[] primes;
-
-    private String[] messages;
-
     @Before
     public void setUp() throws Exception {
-        primes = new Integer[]{1,2,3};
-        messages = new String[]{"a","b","c"};
-        target = new SeiveResult(primes,messages);
+        Integer[] primes = new Integer[]{1, 2, 3};
+        String[] messages = new String[]{"a", "b", "c"};
+        target = new SeiveResult(primes, messages);
     }
 
     @Test
