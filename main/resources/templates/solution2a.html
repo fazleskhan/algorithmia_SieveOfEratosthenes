@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Spring Framework Guru</title>
+    <title>Solution 1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
@@ -18,19 +18,21 @@
 </head>
 <body>
 <div class="container">
+    <!--suppress CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag -->
     <div class="jumbotron">
 
-        <h1>VirMedica Sample Solutions</h1>
+        <h1>Solution 2a</h1>
+        <p><a href="/">Return to Index</a></p>
 
-        <ul>
-            <li><!--suppress HtmlUnknownTarget -->
-                <a href="/solution1">Solution to question 1</a></li>
-            <li><!--suppress HtmlUnknownTarget -->
-                <a href="/solution2">Solution to question 2</a></li>
-            <li><!--suppress HtmlUnknownTarget -->
-                <a href="/solution2a">Solution to question 2 with functional code</a></li>
+        <!--suppress HtmlUnknownTarget -->
+        <form action="/solution2a" method="post">
+            <input type="text" name="lastNumber"/>
+            <input type="text" name="threadCount"/>
+            <input type="submit" value="Submit"/>
+        </form>
 
-        </ul>
+        <p th:text="'Sumitted Arguments: ' + ${lastNumber} + ' ' + ${threadCount}" />
+        <p th:text="${messages}" />
     </div>
 </div>
 
