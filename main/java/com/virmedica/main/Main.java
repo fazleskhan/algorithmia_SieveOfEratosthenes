@@ -20,7 +20,7 @@ class Main {
         //default constructor
     }
 
-    public static void main(final String[] args) {
+    public static void oldmain(final String[] args) {
         logger.info("Starting main");
         if (args.length != 0) {
             System.out.println(COMMAND_LINE_ARGS_NOT_SUPPORTED_MESSAGE);

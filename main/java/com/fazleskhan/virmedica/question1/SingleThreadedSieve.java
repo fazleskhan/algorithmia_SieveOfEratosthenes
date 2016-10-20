@@ -1,0 +1,53 @@
+package com.fazleskhan.virmedica.question1;
+
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
+import static com.virmedica.shared.Helper.initPrimes;
+
+@Service
+public class SingleThreadedSieve {
+
+    private static final String START__TEXT = "Start calculating prime numbers between %s and %s";
+    private static final int START_NUMBER = 1;
+    private static final String START_TIMESTAMP_TEXT = "Sieve took %s ms";
+    private static final int FIRST_PRIME_NUMBER = 2;
+    private static final String COMMA_DELIMITER = ", ";
+    private static final String START_SEIVE = "Start Sieve";
+    private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
+
+    public String[] calcPrimes(final int lastNumber) {
+        final ArrayList<String> messages = new ArrayList<>();
+        logInfo(String.format(START__TEXT, START_NUMBER, String.valueOf(lastNumber)), messages);
+        logInfo(START_SEIVE, messages);
+        final long start = System.nanoTime();
+        final boolean[] primes = initPrimes(lastNumber);
+
+        for (int i = FIRST_PRIME_NUMBER; i < primes.length; i++) {
+            //if the number is prime (which 2 is) go iterate through and set multiples of the value to false
+            if (primes[i]) {
+                for (int j = FIRST_PRIME_NUMBER; i * j < primes.length; j++) {
+                    primes[i * j] = false;
+                }
+            }
+        }
+        final long end = System.nanoTime();
+        int primeCount = 0;
+        final StringBuilder sb = new StringBuilder();
+        for (int k = 0; k < primes.length; k++) {
+            if (primes[k]) {
+                sb.append(k).append(COMMA_DELIMITER);
+                primeCount++;
+            }
+        }
+        logInfo(sb.toString(), messages);
+        logInfo(String.format(NUMBER_PRIMES_TEXT, primeCount), messages);
+        logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
+        return messages.toArray(new String[0]);
+    }
+
+    private void logInfo(final String message, final ArrayList<String> messages) {
+        messages.add(message);
+    }
+}
