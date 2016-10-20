@@ -1,7 +1,7 @@
 package com.fazleskhan.virmedica;
 
 
-import com.fazleskhan.virmedica.question1.SingleThreadedSieve;
+import com.fazleskhan.virmedica.question1.SieveOfEratosthenes;
 import com.fazleskhan.virmedica.question2.MultithreadedSieve;
 import com.fazleskhan.virmedica.question2a.FunctionalMultithreadedSieve;
 import com.fazleskhan.virmedica.shared.SieveResult;
@@ -16,15 +16,15 @@ import java.util.Arrays;
 @Controller
 class IndexController {
 
-    private final SingleThreadedSieve singleThreadedSieve;
+    private final SieveOfEratosthenes sieveOfEratosthenes;
     private final MultithreadedSieve multithreadedSieve;
     private final FunctionalMultithreadedSieve functionalMultithreadedSieve;
 
     @Autowired
-    public IndexController(SingleThreadedSieve singleThreadedSieve,
+    public IndexController(SieveOfEratosthenes sieveOfEratosthenes,
                            MultithreadedSieve multithreadedSieve,
                            FunctionalMultithreadedSieve functionalMultithreadedSieve) {
-        this.singleThreadedSieve = singleThreadedSieve;
+        this.sieveOfEratosthenes = sieveOfEratosthenes;
         this.multithreadedSieve = multithreadedSieve;
         this.functionalMultithreadedSieve = functionalMultithreadedSieve;
     }
@@ -41,7 +41,7 @@ class IndexController {
         model.addAttribute("lastNumber", lastNumber);
         if (!"".equals(lastNumber)) {
             final int arg = Integer.parseInt(lastNumber);
-            final SieveResult result = getSingleThreadedSieve().calcPrimes(arg);
+            final SieveResult result = getSieveOfEratosthenes().calcPrimes(arg);
             for (int i = 1; i < result.getMessages().length; i++) {
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
@@ -89,8 +89,8 @@ class IndexController {
     }
 
 
-    private SingleThreadedSieve getSingleThreadedSieve() {
-        return this.singleThreadedSieve;
+    private SieveOfEratosthenes getSieveOfEratosthenes() {
+        return this.sieveOfEratosthenes;
     }
 
     private MultithreadedSieve getMultithreadedSieve() {

@@ -15,16 +15,16 @@ import static org.junit.Assert.assertNotEquals;
 //import org.junit.Assert;
 
 @RunWith(EasyMockRunner.class)
-public class SingleThreadedSieveTest {
+public class SieveOfEratosthenesTest {
 
-    private SingleThreadedSieve target;
+    private SieveOfEratosthenes target;
 
     private Helper mock;
 
     @Before
     public void setUp() {
         mock = createMock(Helper.class);
-        target = new SingleThreadedSieve(mock);
+        target = new SieveOfEratosthenes(mock);
     }
 
     @Test

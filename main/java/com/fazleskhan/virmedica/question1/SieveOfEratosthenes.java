@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class SingleThreadedSieve {
+public class SieveOfEratosthenes {
 
     private static final String START__TEXT = "Start calculating prime numbers between %s and %s";
     private static final int START_NUMBER = 1;
@@ -18,7 +18,12 @@ public class SingleThreadedSieve {
 
     private final Helper helper;
 
-    public SingleThreadedSieve(Helper helper) {
+    /**
+     * https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+     *
+     * @param helper
+     */
+    public SieveOfEratosthenes(Helper helper) {
         this.helper = helper;
     }
 
