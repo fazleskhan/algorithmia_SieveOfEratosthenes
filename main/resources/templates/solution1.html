@@ -26,11 +26,12 @@
 
         <!--suppress HtmlUnknownTarget -->
         <form action="/solution1" method="post">
-            <input type="text" name="lastNumber"/>
+            <label for="lastNumber">Number to search till</label>
+            <input id="lastNumber" type="text" name="lastNumber"/>
             <input type="submit" value="Submit"/>
         </form>
 
-        <p th:text="'Sumitted Argument: ' + ${lastNumber}" />
+        <p th:text="'Submitted Argument: ' + ${lastNumber}" />
         <p th:text="${messages}" />
         <p th:text="${primes}" />
     </div>
