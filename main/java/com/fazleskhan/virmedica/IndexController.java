@@ -4,7 +4,7 @@ package com.fazleskhan.virmedica;
 import com.fazleskhan.virmedica.question1.SingleThreadedSieve;
 import com.fazleskhan.virmedica.question2.MultithreadedSieve;
 import com.fazleskhan.virmedica.question2a.FunctionalMultithreadedSieve;
-import com.fazleskhan.virmedica.shared.SeiveResult;
+import com.fazleskhan.virmedica.shared.SieveResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +41,7 @@ class IndexController {
         model.addAttribute("lastNumber", lastNumber);
         if( !"".equals(lastNumber)){
             final int arg = Integer.parseInt(lastNumber);
-            final SeiveResult result = getSingleThreadedSieve().calcPrimes(arg);
+            final SieveResult result = getSingleThreadedSieve().calcPrimes(arg);
             for(int i = 1; i < result.getMessages().length; i++){
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
@@ -60,7 +60,7 @@ class IndexController {
         if( !"".equals(lastNumber)){
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final SeiveResult result = getMultithreadedSieve().calcPrimes(arg0,arg1);
+            final SieveResult result = getMultithreadedSieve().calcPrimes(arg0,arg1);
             for(int i = 1; i < result.getMessages().length; i++){
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }
@@ -79,7 +79,7 @@ class IndexController {
         if( !"".equals(lastNumber)){
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final SeiveResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0,arg1);
+            final SieveResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0,arg1);
             for(int i = 1; i < result.getMessages().length; i++){
                 model.addAttribute("messages", Arrays.toString(result.getMessages()));
             }

@@ -1,7 +1,7 @@
 package com.fazleskhan.virmedica.question1;
 
 import com.fazleskhan.virmedica.shared.Helper;
-import com.fazleskhan.virmedica.shared.SeiveResult;
+import com.fazleskhan.virmedica.shared.SieveResult;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class SingleThreadedSieve {
         this.helper = helper;
     }
 
-    public SeiveResult calcPrimes(final int lastNumber) {
+    public SieveResult calcPrimes(final int lastNumber) {
         final ArrayList<String> messages = new ArrayList<>();
         logInfo(String.format(START__TEXT, START_NUMBER, String.valueOf(lastNumber)), messages);
         logInfo(START_SEIVE, messages);
@@ -46,7 +46,7 @@ public class SingleThreadedSieve {
         }
         logInfo(String.format(NUMBER_PRIMES_TEXT, primesCollector.size()), messages);
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return new SeiveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
+        return new SieveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {

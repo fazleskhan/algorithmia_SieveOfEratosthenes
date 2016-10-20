@@ -4,15 +4,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SeiveResultTest {
+public class SieveResultTest {
 
-    private SeiveResult target;
+    private SieveResult target;
 
     @Before
     public void setUp() throws Exception {
         Integer[] primes = new Integer[]{1, 2, 3};
         String[] messages = new String[]{"a", "b", "c"};
-        target = new SeiveResult(primes, messages);
+        target = new SieveResult(primes, messages);
     }
 
     @Test

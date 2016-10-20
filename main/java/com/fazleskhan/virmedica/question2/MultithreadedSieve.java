@@ -2,7 +2,7 @@ package com.fazleskhan.virmedica.question2;
 
 
 import com.fazleskhan.virmedica.shared.Helper;
-import com.fazleskhan.virmedica.shared.SeiveResult;
+import com.fazleskhan.virmedica.shared.SieveResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class MultithreadedSieve {
         this.helper = helper;
     }
 
-    public SeiveResult calcPrimes(final int lastNumber, final int threadCount) {
+    public SieveResult calcPrimes(final int lastNumber, final int threadCount) {
         final ArrayList<String> messages = new ArrayList<>();
         final int cores = Runtime.getRuntime().availableProcessors();
         logInfo(String.format(NUMBER_PROCESSORS_TEXT, cores), messages);
@@ -59,7 +59,7 @@ public class MultithreadedSieve {
         logInfo(String.format(NUMBER_PRIMES_TEXT, primesCollector.size()), messages);
 
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return new SeiveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
+        return new SieveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {
