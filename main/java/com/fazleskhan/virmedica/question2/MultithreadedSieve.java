@@ -97,7 +97,7 @@ public class MultithreadedSieve {
         }
     }
 
-    public Helper getHelper(){
+    private Helper getHelper(){
         return this.helper;
     }
 }
