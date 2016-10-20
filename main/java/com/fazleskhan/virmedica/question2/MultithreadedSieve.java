@@ -2,6 +2,7 @@ package com.fazleskhan.virmedica.question2;
 
 
 import com.fazleskhan.virmedica.shared.Helper;
+import com.fazleskhan.virmedica.shared.SeiveResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class MultithreadedSieve {
         this.helper = helper;
     }
 
-    public String[] calcPrimes(final int lastNumber, final int threadCount) {
+    public SeiveResult calcPrimes(final int lastNumber, final int threadCount) {
         final ArrayList<String> messages = new ArrayList<>();
         final int cores = Runtime.getRuntime().availableProcessors();
         logInfo(String.format(NUMBER_PROCESSORS_TEXT, cores), messages);
@@ -50,19 +51,16 @@ public class MultithreadedSieve {
         }
 
         final long end = System.nanoTime();
-        int primeCount = 0;
-        final StringBuilder sb = new StringBuilder();
+        final ArrayList<Integer> primesCollector = new ArrayList<>();
         for (int k = 0; k < primes.length; k++) {
             if (primes[k]) {
-                sb.append(k).append(COMMA_DELIMITER);
-                primeCount++;
+                primesCollector.add(k);
             }
         }
-        logInfo(sb.toString(), messages);
-        logInfo(String.format(NUMBER_PRIMES_TEXT, primeCount), messages);
+        logInfo(String.format(NUMBER_PRIMES_TEXT, primesCollector.size()), messages);
 
         logInfo(String.format(START_TIMESTAMP_TEXT, (end - start) / 1000), messages);
-        return messages.toArray(new String[0]);
+        return new SeiveResult(primesCollector.toArray(new Integer[0]),messages.toArray(new String[0]));
     }
 
     private void logInfo(final String message, final ArrayList<String> messages) {
