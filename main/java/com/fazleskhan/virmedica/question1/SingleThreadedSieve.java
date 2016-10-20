@@ -1,10 +1,9 @@
 package com.fazleskhan.virmedica.question1;
 
+import com.fazleskhan.virmedica.shared.Helper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
-import static com.virmedica.shared.Helper.initPrimes;
 
 @Service
 public class SingleThreadedSieve {
@@ -17,12 +16,18 @@ public class SingleThreadedSieve {
     private static final String START_SEIVE = "Start Sieve";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
+    private final Helper helper;
+
+    public SingleThreadedSieve(Helper helper){
+        this.helper = helper;
+    }
+
     public String[] calcPrimes(final int lastNumber) {
         final ArrayList<String> messages = new ArrayList<>();
         logInfo(String.format(START__TEXT, START_NUMBER, String.valueOf(lastNumber)), messages);
         logInfo(START_SEIVE, messages);
         final long start = System.nanoTime();
-        final boolean[] primes = initPrimes(lastNumber);
+        final boolean[] primes = getHelper().initPrimes(lastNumber);
 
         for (int i = FIRST_PRIME_NUMBER; i < primes.length; i++) {
             //if the number is prime (which 2 is) go iterate through and set multiples of the value to false
@@ -49,5 +54,9 @@ public class SingleThreadedSieve {
 
     private void logInfo(final String message, final ArrayList<String> messages) {
         messages.add(message);
+    }
+
+    private Helper getHelper(){
+        return this.helper;
     }
 }

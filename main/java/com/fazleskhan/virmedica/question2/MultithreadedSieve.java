@@ -1,12 +1,11 @@
 package com.fazleskhan.virmedica.question2;
 
 
+import com.fazleskhan.virmedica.shared.Helper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
-
-import static com.virmedica.shared.Helper.initPrimes;
 
 @Service
 public class MultithreadedSieve {
@@ -19,13 +18,20 @@ public class MultithreadedSieve {
     private static final String COMMA_DELIMITER = ", ";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
+    private final Helper helper;
+
+    @Autowired
+    public MultithreadedSieve(Helper helper){
+        this.helper = helper;
+    }
+
     public String[] calcPrimes(final int lastNumber, final int threadCount) {
         final ArrayList<String> messages = new ArrayList<>();
         final int cores = Runtime.getRuntime().availableProcessors();
         logInfo(String.format(NUMBER_PROCESSORS_TEXT, cores), messages);
         logInfo(String.format(START_TEXT, START_NUMBER, String.valueOf(lastNumber), String.valueOf(threadCount)), messages);
         final long start = System.nanoTime();
-        final boolean[] primes = initPrimes(lastNumber);
+        final boolean[] primes = getHelper().initPrimes(lastNumber);
 
         final ArrayList<Thread> threads = new ArrayList<>(threadCount);
         for (int i = 0; i < threadCount; i++) {
@@ -89,5 +95,9 @@ public class MultithreadedSieve {
                 }
             }
         }
+    }
+
+    public Helper getHelper(){
+        return this.helper;
     }
 }
