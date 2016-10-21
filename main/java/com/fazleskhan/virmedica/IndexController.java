@@ -4,17 +4,19 @@ package com.fazleskhan.virmedica;
 import com.fazleskhan.virmedica.question1.SieveOfEratosthenes;
 import com.fazleskhan.virmedica.question2.MultithreadedSieve;
 import com.fazleskhan.virmedica.question2a.FunctionalMultithreadedSieve;
-import com.fazleskhan.virmedica.shared.SieveResult;
+import com.fazleskhan.virmedica.shared.PrimesResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
-
 @Controller
 class IndexController {
+
+    private static final String LASTNUMBER_KEY = "lastNumber";
+    private static final String RESULT_KEY = "result";
+    private static final String THREADCOUNT_KEY = "threadCount";
 
     private final SieveOfEratosthenes sieveOfEratosthenes;
     private final MultithreadedSieve multithreadedSieve;
@@ -37,53 +39,44 @@ class IndexController {
 
     @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution1")
-    public String solution1(@RequestParam(value = "lastNumber", required = false, defaultValue = "") String lastNumber, Model model) {
-        model.addAttribute("lastNumber", lastNumber);
+    public String solution1(@RequestParam(value = LASTNUMBER_KEY, required = false, defaultValue = "") String lastNumber, Model model) {
+        model.addAttribute(LASTNUMBER_KEY, lastNumber);
         if (!"".equals(lastNumber)) {
             final int arg = Integer.parseInt(lastNumber);
-            final SieveResult result = getSieveOfEratosthenes().calcPrimes(arg);
-            for (int i = 1; i < result.getMessages().length; i++) {
-                model.addAttribute("messages", Arrays.toString(result.getMessages()));
-            }
-            model.addAttribute("primes", Arrays.toString(result.getPrimes()));
+            final PrimesResult result = getSieveOfEratosthenes().calcPrimes(arg);
+            model.addAttribute(RESULT_KEY, result);
         }
         return "solution1";
     }
 
     @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution2")
-    public String solution2a(@RequestParam(value = "lastNumber", required = false, defaultValue = "") String lastNumber,
-                             @RequestParam(value = "threadCount", required = false, defaultValue = "") String threadCount,
+    public String solution2a(@RequestParam(value = LASTNUMBER_KEY, required = false, defaultValue = "") String lastNumber,
+                             @RequestParam(value = THREADCOUNT_KEY, required = false, defaultValue = "") String threadCount,
                              Model model) {
-        model.addAttribute("lastNumber", lastNumber);
-        model.addAttribute("threadCount", threadCount);
+        model.addAttribute(LASTNUMBER_KEY, lastNumber);
+        model.addAttribute(THREADCOUNT_KEY, threadCount);
         if (!"".equals(lastNumber)) {
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final SieveResult result = getMultithreadedSieve().calcPrimes(arg0, arg1);
-            for (int i = 1; i < result.getMessages().length; i++) {
-                model.addAttribute("messages", Arrays.toString(result.getMessages()));
-            }
-            model.addAttribute("primes", Arrays.toString(result.getPrimes()));
+            final PrimesResult result = getMultithreadedSieve().calcPrimes(arg0, arg1);
+            model.addAttribute(RESULT_KEY, result);
         }
         return "solution2";
     }
 
     @SuppressWarnings("SameReturnValue")
     @RequestMapping("/solution2a")
-    public String solution2(@RequestParam(value = "lastNumber", required = false, defaultValue = "") String lastNumber,
-                            @RequestParam(value = "threadCount", required = false, defaultValue = "") String threadCount,
+    public String solution2(@RequestParam(value = LASTNUMBER_KEY, required = false, defaultValue = "") String lastNumber,
+                            @RequestParam(value = THREADCOUNT_KEY, required = false, defaultValue = "") String threadCount,
                             Model model) {
-        model.addAttribute("lastNumber", lastNumber);
-        model.addAttribute("threadCount", threadCount);
+        model.addAttribute(LASTNUMBER_KEY, lastNumber);
+        model.addAttribute(THREADCOUNT_KEY, threadCount);
         if (!"".equals(lastNumber)) {
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final SieveResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0, arg1);
-            for (int i = 1; i < result.getMessages().length; i++) {
-                model.addAttribute("messages", Arrays.toString(result.getMessages()));
-            }
-            model.addAttribute("primes", Arrays.toString(result.getPrimes()));
+            final PrimesResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0, arg1);
+            model.addAttribute(RESULT_KEY, result);
         }
         return "solution2";
     }

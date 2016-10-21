@@ -46,11 +46,24 @@
             <h3>Submitted Argument:</h3>
             <div th:text="'Submitted Number: ' + ${lastNumber}"/>
         </section>
-        <section>
-            <h3>Messages</h3>
-            <div th:text="${messages}"/>
-            <h3>Primes</h3>
-            <div th:text="${primes}"/>
+        <section th:if="${null != result}">
+            <table>
+                <tr>
+                    <th>Messages</th>
+                </tr>
+                <tr th:each="message :${result.messages}">
+                    <td th:text="${message}" />
+                </tr>
+            </table>
+            <!-- want to replace with http://stackoverflow.com/questions/17812372/in-thymeleaf-how-can-write-theach-to-combine-rows-and-columns-->
+            <table>
+                <tr>
+                    <th>Primes</th>
+                </tr>
+                <tr th:each="prime,iterStat :${result.primes}">
+                    <td th:text="${prime}" />
+                </tr>
+            </table>
         </section>
     </div>
 </div>
