@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Solution 1</title>
+    <title>Solution 2: Sieve of Eratosthenes (Multithreaded)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
@@ -18,24 +18,44 @@
 </head>
 <body>
 <div class="container">
-    <!--suppress CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag -->
+    <!--suppress CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag -->
     <div class="jumbotron">
 
-        <h1>Solution 2</h1>
-        <p><a href="/">Return to Index</a></p>
+        <section>
+            <div>
+                <a class="internalNav" href="/">Return to Index</a>
+            </div>
+            <h2>Solution 2: Sieve of Eratosthenes (Multithreaded)</h2>
+            <div>based on <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">Sieve of
+                Eratosthenes</a></div>
+        </section>
+        <section>
+            <div>Please enter the number to which prime numbers should be calculated and with how many threads</div>
+        </section>
+        <section>
+            <div>
+                <!--suppress HtmlUnknownTarget -->
+                <form action="/solution2" method="post">
+                    <label for="lastNumber">Number to search till</label>
+                    <input id="lastNumber" type="text" name="lastNumber"/>
+                    <label for="threadCount">Number of threads</label>
+                    <input id="threadCount" type="text" name="threadCount"/>
+                    <input type="submit" value="Calculate"/>
 
-        <!--suppress HtmlUnknownTarget -->
-        <form action="/solution2" method="post">
-            <label for="lastNumber">Number to search till</label>
-            <input id="lastNumber" type="text" name="lastNumber"/>
-            <label for="threadCount">Number of threads till</label>
-            <input id="threadCount" type="text" name="threadCount"/>
-            <input type="submit" value="Submit"/>
-        </form>
-
-        <p th:text="'Submitted Arguments: ' + ${lastNumber} + ' ' + ${threadCount}"/>
-        <p th:text="${messages}"/>
-        <p th:text="${primes}"/>
+                </form>
+            </div>
+        </section>
+        <section>
+            <h3>Submitted Arguments:</h3>
+            <div th:text="'Submitted Number: ' + ${lastNumber}" />
+            <div th:text="'Submitted Threads: ' + ${threadCount}" />
+        </section>
+        <section>
+            <h3>Messages</h3>
+            <div th:text="${messages}"/>
+            <h3>Primes</h3>
+            <div th:text="${primes}"/>
+        </section>
     </div>
 </div>
 
