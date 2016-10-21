@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-class IndexController {
+class MyController {
 
     private static final String LASTNUMBER_KEY = "lastNumber";
     private static final String RESULT_KEY = "result";
@@ -23,9 +23,9 @@ class IndexController {
     private final FunctionalMultithreadedSieve functionalMultithreadedSieve;
 
     @Autowired
-    public IndexController(SieveOfEratosthenes sieveOfEratosthenes,
-                           MultithreadedSieve multithreadedSieve,
-                           FunctionalMultithreadedSieve functionalMultithreadedSieve) {
+    public MyController(SieveOfEratosthenes sieveOfEratosthenes,
+                        MultithreadedSieve multithreadedSieve,
+                        FunctionalMultithreadedSieve functionalMultithreadedSieve) {
         this.sieveOfEratosthenes = sieveOfEratosthenes;
         this.multithreadedSieve = multithreadedSieve;
         this.functionalMultithreadedSieve = functionalMultithreadedSieve;
