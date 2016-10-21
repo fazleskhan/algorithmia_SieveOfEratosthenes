@@ -2,7 +2,7 @@ package com.fazleskhan.virmedica;
 
 
 import com.fazleskhan.virmedica.question1.SieveOfEratosthenes;
-import com.fazleskhan.virmedica.question2.MultithreadedSieve;
+import com.fazleskhan.virmedica.question2.MultithreadedSieveOfEratosthenes;
 import com.fazleskhan.virmedica.question2a.FunctionalMultithreadedSieve;
 import com.fazleskhan.virmedica.shared.PrimesResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +19,15 @@ class MyController {
     private static final String THREADCOUNT_KEY = "threadCount";
 
     private final SieveOfEratosthenes sieveOfEratosthenes;
-    private final MultithreadedSieve multithreadedSieve;
+    private final MultithreadedSieveOfEratosthenes multithreadedSieveOfEratosthenes;
     private final FunctionalMultithreadedSieve functionalMultithreadedSieve;
 
     @Autowired
     public MyController(SieveOfEratosthenes sieveOfEratosthenes,
-                        MultithreadedSieve multithreadedSieve,
+                        MultithreadedSieveOfEratosthenes multithreadedSieveOfEratosthenes,
                         FunctionalMultithreadedSieve functionalMultithreadedSieve) {
         this.sieveOfEratosthenes = sieveOfEratosthenes;
-        this.multithreadedSieve = multithreadedSieve;
+        this.multithreadedSieveOfEratosthenes = multithreadedSieveOfEratosthenes;
         this.functionalMultithreadedSieve = functionalMultithreadedSieve;
     }
 
@@ -59,7 +59,7 @@ class MyController {
         if (!"".equals(lastNumber)) {
             final int arg0 = Integer.parseInt(lastNumber);
             final int arg1 = Integer.parseInt(threadCount);
-            final PrimesResult result = getMultithreadedSieve().calcPrimes(arg0, arg1);
+            final PrimesResult result = getMultithreadedSieveOfEratosthenes().calcPrimes(arg0, arg1);
             model.addAttribute(RESULT_KEY, result);
         }
         return "solution2";
@@ -86,8 +86,8 @@ class MyController {
         return this.sieveOfEratosthenes;
     }
 
-    private MultithreadedSieve getMultithreadedSieve() {
-        return this.multithreadedSieve;
+    private MultithreadedSieveOfEratosthenes getMultithreadedSieveOfEratosthenes() {
+        return this.multithreadedSieveOfEratosthenes;
     }
 
     private FunctionalMultithreadedSieve getFunctionalMultithreadedSieve() {

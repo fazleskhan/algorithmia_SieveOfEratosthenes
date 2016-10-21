@@ -12,7 +12,7 @@ import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class FunctionalMultithreadedSieveTest {
+public class FunctionalMultithreadedSieveOfEratosthenesTest {
 
     private FunctionalMultithreadedSieve target;
 

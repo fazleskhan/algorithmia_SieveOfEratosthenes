@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class MultithreadedSieve {
+public class MultithreadedSieveOfEratosthenes {
 
     private static final String NUMBER_PROCESSORS_TEXT = "The number of available processors is %s";
     private static final String START_TEXT = "Start calculating prime numbers between %s and %s with %s threads";
@@ -21,7 +21,7 @@ public class MultithreadedSieve {
     private final Helper helper;
 
     @Autowired
-    public MultithreadedSieve(Helper helper) {
+    public MultithreadedSieveOfEratosthenes(Helper helper) {
         this.helper = helper;
     }
 

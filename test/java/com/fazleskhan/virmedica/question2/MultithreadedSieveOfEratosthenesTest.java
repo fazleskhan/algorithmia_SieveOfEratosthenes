@@ -14,16 +14,16 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class MultithreadedSieveTest {
+public class MultithreadedSieveOfEratosthenesTest {
 
-    private MultithreadedSieve target;
+    private MultithreadedSieveOfEratosthenes target;
 
     private Helper mock;
 
     @Before
     public void setUp() {
         mock = createMock(Helper.class);
-        target = new MultithreadedSieve(mock);
+        target = new MultithreadedSieveOfEratosthenes(mock);
     }
 
     @Test
