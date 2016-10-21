@@ -3,7 +3,6 @@ package com.fazleskhan.virmedica;
 
 import com.fazleskhan.virmedica.question1.SieveOfEratosthenes;
 import com.fazleskhan.virmedica.question2.MultithreadedSieveOfEratosthenes;
-import com.fazleskhan.virmedica.question2a.FunctionalMultithreadedSieve;
 import com.fazleskhan.virmedica.shared.PrimesResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,15 +19,12 @@ class MyController {
 
     private final SieveOfEratosthenes sieveOfEratosthenes;
     private final MultithreadedSieveOfEratosthenes multithreadedSieveOfEratosthenes;
-    private final FunctionalMultithreadedSieve functionalMultithreadedSieve;
 
     @Autowired
     public MyController(SieveOfEratosthenes sieveOfEratosthenes,
-                        MultithreadedSieveOfEratosthenes multithreadedSieveOfEratosthenes,
-                        FunctionalMultithreadedSieve functionalMultithreadedSieve) {
+                        MultithreadedSieveOfEratosthenes multithreadedSieveOfEratosthenes) {
         this.sieveOfEratosthenes = sieveOfEratosthenes;
         this.multithreadedSieveOfEratosthenes = multithreadedSieveOfEratosthenes;
-        this.functionalMultithreadedSieve = functionalMultithreadedSieve;
     }
 
     @SuppressWarnings({"SameReturnValue", "unused"})
@@ -65,32 +61,11 @@ class MyController {
         return "solution2";
     }
 
-    @SuppressWarnings("SameReturnValue")
-    @RequestMapping("/solution2a")
-    public String solution2(@RequestParam(value = LASTNUMBER_KEY, required = false, defaultValue = "") String lastNumber,
-                            @RequestParam(value = THREADCOUNT_KEY, required = false, defaultValue = "") String threadCount,
-                            Model model) {
-        model.addAttribute(LASTNUMBER_KEY, lastNumber);
-        model.addAttribute(THREADCOUNT_KEY, threadCount);
-        if (!"".equals(lastNumber)) {
-            final int arg0 = Integer.parseInt(lastNumber);
-            final int arg1 = Integer.parseInt(threadCount);
-            final PrimesResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0, arg1);
-            model.addAttribute(RESULT_KEY, result);
-        }
-        return "solution2a";
-    }
-
-
     private SieveOfEratosthenes getSieveOfEratosthenes() {
         return this.sieveOfEratosthenes;
     }
 
     private MultithreadedSieveOfEratosthenes getMultithreadedSieveOfEratosthenes() {
         return this.multithreadedSieveOfEratosthenes;
-    }
-
-    private FunctionalMultithreadedSieve getFunctionalMultithreadedSieve() {
-        return this.functionalMultithreadedSieve;
     }
 }
