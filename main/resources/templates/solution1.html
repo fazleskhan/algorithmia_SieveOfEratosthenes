@@ -36,13 +36,13 @@
             <div>
                 <!--suppress HtmlUnknownTarget -->
                 <form action="/solution1" method="post">
-                    <label for="lastNumber">Search for primes till number:</label>
+                    <label for="lastNumber">Search for primes till number</label>
                     <input id="lastNumber" type="text" name="lastNumber"/>
                     <input type="submit" value="Calculate"/>
                 </form>
             </div>
         </section>
-        <section>
+        <section th:if="${null != result}">
             <h3>Submitted Argument:</h3>
             <div th:text="'Submitted Number: ' + ${lastNumber}"/>
         </section>

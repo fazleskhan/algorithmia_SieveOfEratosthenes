@@ -78,7 +78,7 @@ class IndexController {
             final PrimesResult result = getFunctionalMultithreadedSieve().calcPrimes(arg0, arg1);
             model.addAttribute(RESULT_KEY, result);
         }
-        return "solution2";
+        return "solution2a";
     }
 
 

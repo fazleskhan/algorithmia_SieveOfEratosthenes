@@ -36,7 +36,7 @@
             <div>
                 <!--suppress HtmlUnknownTarget -->
                 <form action="/solution2" method="post">
-                    <label for="lastNumber">Number to search till</label>
+                    <label for="lastNumber">Search for primes till number</label>
                     <input id="lastNumber" type="text" name="lastNumber"/>
                     <label for="threadCount">Number of threads</label>
                     <input id="threadCount" type="text" name="threadCount"/>
@@ -45,16 +45,29 @@
                 </form>
             </div>
         </section>
-        <section>
+        <section th:if="${null != result}">
             <h3>Submitted Arguments:</h3>
             <div th:text="'Submitted Number: ' + ${lastNumber}" />
             <div th:text="'Submitted Threads: ' + ${threadCount}" />
         </section>
-        <section>
-            <h3>Messages</h3>
-            <div th:text="${messages}"/>
-            <h3>Primes</h3>
-            <div th:text="${primes}"/>
+        <section th:if="${null != result}">
+            <table>
+                <tr>
+                    <th>Messages</th>
+                </tr>
+                <tr th:each="message :${result.messages}">
+                    <td th:text="${message}" />
+                </tr>
+            </table>
+            <!-- want to replace with http://stackoverflow.com/questions/17812372/in-thymeleaf-how-can-write-theach-to-combine-rows-and-columns-->
+            <table>
+                <tr>
+                    <th>Primes</th>
+                </tr>
+                <tr th:each="prime,iterStat :${result.primes}">
+                    <td th:text="${prime}" />
+                </tr>
+            </table>
         </section>
     </div>
 </div>
