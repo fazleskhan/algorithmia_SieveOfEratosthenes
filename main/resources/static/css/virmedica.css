@@ -1,20 +1,20 @@
-table {
-    border-collapse: collapse;
+.internalNav {
+    font-size: 21px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    line-height: 30px;
 }
 
-td {
-    border: 1px solid black;
+section {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
-th {
-    border: 1px solid black;
-    padding: 5px;
-}
-
-h1 {
-    font-weight: bold;
-}
-
-li {
-    font-weight: bold;
+label {
+    font-weight: normal;
 }

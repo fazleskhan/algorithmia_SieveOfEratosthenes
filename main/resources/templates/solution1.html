@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Solution 1</title>
+    <title>Solution 1: Sieve of Eratosthenes</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
@@ -21,19 +21,36 @@
     <!--suppress CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag, CheckEmptyScriptTag -->
     <div class="jumbotron">
 
-        <h1>Solution 1</h1>
-        <p><a href="/">Return to Index</a></p>
-
-        <!--suppress HtmlUnknownTarget -->
-        <form action="/solution1" method="post">
-            <label for="lastNumber">Number to search till</label>
-            <input id="lastNumber" type="text" name="lastNumber"/>
-            <input type="submit" value="Submit"/>
-        </form>
-
-        <p th:text="'Submitted Argument: ' + ${lastNumber}"/>
-        <p th:text="${messages}"/>
-        <p th:text="${primes}"/>
+        <section>
+            <div>
+                <a class="internalNav" href="/">Return to Index</a>
+            </div>
+            <h2>Solution 1: Sieve of Eratosthenes</h2>
+            <div>based on <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">Sieve of
+                Eratosthenes</a></div>
+        </section>
+        <section>
+            <div>Please enter the number to which prime numbers should be calculated</div>
+        </section>
+        <section>
+            <div>
+                <!--suppress HtmlUnknownTarget -->
+                <form action="/solution1" method="post">
+                    <label for="lastNumber">Search for primes till number:</label>
+                    <input id="lastNumber" type="text" name="lastNumber"/>
+                    <input type="submit" value="Calculate"/>
+                </form>
+            </div>
+        </section>
+        <section>
+            <h3 th:text="'Submitted Argument: ' + ${lastNumber}"/>
+        </section>
+        <section>
+            <h3>Messages</h3>
+            <div th:text="${messages}"/>
+            <h3>Primes</h3>
+            <div th:text="${primes}"/>
+        </section>
     </div>
 </div>
 
