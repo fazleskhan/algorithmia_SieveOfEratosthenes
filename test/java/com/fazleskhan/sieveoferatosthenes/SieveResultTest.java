@@ -1,5 +1,6 @@
-package com.fazleskhan.sieveoferatosthenes.shared;
+package com.fazleskhan.sieveoferatosthenes;
 
+import com.fazleskhan.sieveoferatosthenes.PrimesResult;
 import org.junit.Before;
 import org.junit.Test;
 

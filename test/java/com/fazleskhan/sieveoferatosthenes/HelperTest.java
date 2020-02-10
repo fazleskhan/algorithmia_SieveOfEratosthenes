@@ -1,5 +1,6 @@
-package com.fazleskhan.sieveoferatosthenes.shared;
+package com.fazleskhan.sieveoferatosthenes;
 
+import com.fazleskhan.sieveoferatosthenes.Helper;
 import org.junit.Assert;
 import org.junit.Test;
 

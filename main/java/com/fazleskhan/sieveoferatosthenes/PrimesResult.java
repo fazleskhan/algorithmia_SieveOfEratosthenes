@@ -1,4 +1,4 @@
-package com.fazleskhan.sieveoferatosthenes.shared;
+package com.fazleskhan.sieveoferatosthenes;
 
 import java.util.List;
 

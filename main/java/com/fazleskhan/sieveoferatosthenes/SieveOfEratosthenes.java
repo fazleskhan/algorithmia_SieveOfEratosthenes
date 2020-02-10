@@ -1,7 +1,4 @@
-package com.fazleskhan.sieveoferatosthenes.question1;
-
-import com.fazleskhan.sieveoferatosthenes.shared.Helper;
-import com.fazleskhan.sieveoferatosthenes.shared.PrimesResult;
+package com.fazleskhan.sieveoferatosthenes;
 
 import java.util.ArrayList;
 

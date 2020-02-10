@@ -1,7 +1,8 @@
-package com.fazleskhan.sieveoferatosthenes.question1;
+package com.fazleskhan.sieveoferatosthenes;
 
-import com.fazleskhan.sieveoferatosthenes.shared.Helper;
-import com.fazleskhan.sieveoferatosthenes.shared.PrimesResult;
+import com.fazleskhan.sieveoferatosthenes.SieveOfEratosthenes;
+import com.fazleskhan.sieveoferatosthenes.Helper;
+import com.fazleskhan.sieveoferatosthenes.PrimesResult;
 import org.easymock.EasyMock;
 import org.easymock.EasyMockRunner;
 import org.junit.Before;
