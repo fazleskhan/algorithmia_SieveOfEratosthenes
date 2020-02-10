@@ -1,6 +1,8 @@
 package com.fazleskhan.sieveoferatosthenes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Function;
 
 public class SieveOfEratosthenes {
 
@@ -11,15 +13,20 @@ public class SieveOfEratosthenes {
     private static final String START_SEIVE = "Start Sieve";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
-    private final Helper helper;
+    private Function<Integer,boolean[]> sieveFactory;
+
 
     /**
      * https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
      *
-     * @param helper
      */
-    public SieveOfEratosthenes(Helper helper) {
-        this.helper = helper;
+    public SieveOfEratosthenes() {
+        //default constructor
+        this.sieveFactory = SieveOfEratosthenes::initPrimes;
+    }
+
+    public SieveOfEratosthenes(Function<Integer,boolean[]> sieveFactory){
+        this.sieveFactory = sieveFactory;
     }
 
     public PrimesResult calcPrimes(final int lastNumber) {
@@ -27,7 +34,8 @@ public class SieveOfEratosthenes {
         logInfo(String.format(START__TEXT, START_NUMBER, lastNumber), messages);
         logInfo(START_SEIVE, messages);
         final long start = System.nanoTime();
-        final boolean[] primes = getHelper().initPrimes(lastNumber);
+        //final boolean[] primes = getHelper().initPrimes(lastNumber);
+        final boolean[] primes = sieveFactory.apply(lastNumber);
 
         for (int i = FIRST_PRIME_NUMBER; i < primes.length; i++) {
             //if the number is prime (which 2 is) go iterate through and set multiples of the value to false
@@ -53,7 +61,22 @@ public class SieveOfEratosthenes {
         messages.add(message);
     }
 
-    private Helper getHelper() {
-        return this.helper;
+    public static boolean[] initPrimes(final int end) {
+
+        final boolean[] primes = new boolean[end];
+        Arrays.fill(primes, true);
+        switch (end) {
+            case 0:  //return zero element array
+                break;
+            case 1:  //return single element array
+                primes[0] = false;
+                break;
+            default:
+                primes[0] = false;
+                primes[1] = false;
+                break;
+        }
+        return primes;
     }
+
 }

@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.function.Function;
 
 import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
@@ -23,17 +24,17 @@ public class SieveOfEratosthenesTest {
 
     private SieveOfEratosthenes target;
 
-    private Helper mock;
+    private Function mock;
 
     @Before
     public void setUp() {
-        mock = createMock(Helper.class);
+        mock = createMock(Function.class);
         target = new SieveOfEratosthenes(mock);
     }
 
     @Test
     public void calcPrimesZeroLength() {
-        EasyMock.expect(mock.initPrimes(0)).andReturn(new boolean[0]);
+        EasyMock.expect(mock.apply(0)).andReturn(new boolean[0]);
         replay(mock);
         PrimesResult result = target.calcPrimes(0);
         assertFalse(result.getMessages().isEmpty());
@@ -43,7 +44,7 @@ public class SieveOfEratosthenesTest {
 
     @Test
     public void calcPrimesOneLength() {
-        EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false});
+        EasyMock.expect(mock.apply(1)).andReturn(new boolean[]{false});
         replay(mock);
         PrimesResult result = target.calcPrimes(1);
         assertFalse(result.getMessages().isEmpty());
@@ -53,7 +54,7 @@ public class SieveOfEratosthenesTest {
 
     @Test
     public void calcPrimesTwoLength() {
-        EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false, false});
+        EasyMock.expect(mock.apply(1)).andReturn(new boolean[]{false, false});
         replay(mock);
         PrimesResult result = target.calcPrimes(1);
         assertFalse(result.getMessages().isEmpty());
@@ -63,7 +64,7 @@ public class SieveOfEratosthenesTest {
 
     @Test
     public void calcPrimesThreeLength() {
-        EasyMock.expect(mock.initPrimes(3)).andReturn(new boolean[]{false, false, true});
+        EasyMock.expect(mock.apply(3)).andReturn(new boolean[]{false, false, true});
         replay(mock);
         PrimesResult result = target.calcPrimes(3);
         assertFalse(result.getMessages().isEmpty());
@@ -73,7 +74,7 @@ public class SieveOfEratosthenesTest {
 
     @Test
     public void calcPrimesTenLength() {
-        EasyMock.expect(mock.initPrimes(10)).andReturn(new boolean[]{false, false, true, true, true, true, true, true, true, true});
+        EasyMock.expect(mock.apply(10)).andReturn(new boolean[]{false, false, true, true, true, true, true, true, true, true});
         replay(mock);
         PrimesResult result = target.calcPrimes(10);
         assertFalse(result.getMessages().isEmpty());
