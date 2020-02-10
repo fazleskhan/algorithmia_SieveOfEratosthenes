@@ -14,8 +14,6 @@ import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-//import org.junit.Assert;
-
 @SuppressWarnings("unchecked")
 @RunWith(EasyMockRunner.class)
 public class SieveOfEratosthenesTest {
