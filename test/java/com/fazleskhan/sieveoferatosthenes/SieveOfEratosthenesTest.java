@@ -16,12 +16,13 @@ import static org.junit.Assert.*;
 
 //import org.junit.Assert;
 
+@SuppressWarnings("unchecked")
 @RunWith(EasyMockRunner.class)
 public class SieveOfEratosthenesTest {
 
     private SieveOfEratosthenes target;
 
-    private Function mock;
+    private Function<Integer,boolean[]> mock;
 
     @Before
     public void setUp() {

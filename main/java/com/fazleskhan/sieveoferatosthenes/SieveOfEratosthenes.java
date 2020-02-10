@@ -10,16 +10,17 @@ public class SieveOfEratosthenes {
     private static final int START_NUMBER = 1;
     private static final String START_TIMESTAMP_TEXT = "Sieve took %s ms";
     private static final int FIRST_PRIME_NUMBER = 2;
-    private static final String START_SEIVE = "Start Sieve";
+    private static final String START_SIEVE = "Start Sieve";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
-    private Function<Integer,boolean[]> sieveFactory;
+    private final Function<Integer,boolean[]> sieveFactory;
 
 
     /**
      * https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
      *
      */
+    @SuppressWarnings("unused")
     public SieveOfEratosthenes() {
         //default constructor
         this.sieveFactory = SieveOfEratosthenes::initPrimes;
@@ -32,7 +33,7 @@ public class SieveOfEratosthenes {
     public PrimesResult calcPrimes(final int lastNumber) {
         final ArrayList<String> messages = new ArrayList<>();
         logInfo(String.format(START__TEXT, START_NUMBER, lastNumber), messages);
-        logInfo(START_SEIVE, messages);
+        logInfo(START_SIEVE, messages);
         final long start = System.nanoTime();
         //final boolean[] primes = getHelper().initPrimes(lastNumber);
         final boolean[] primes = sieveFactory.apply(lastNumber);
