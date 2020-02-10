@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
@@ -31,7 +32,7 @@ public class SieveOfEratosthenesTest {
     }
 
     @Test
-    public void calcPrimesZeroLength() throws Exception {
+    public void calcPrimesZeroLength() {
         EasyMock.expect(mock.initPrimes(0)).andReturn(new boolean[0]);
         replay(mock);
         PrimesResult result = target.calcPrimes(0);
@@ -41,7 +42,7 @@ public class SieveOfEratosthenesTest {
     }
 
     @Test
-    public void calcPrimesOneLength() throws Exception {
+    public void calcPrimesOneLength() {
         EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false});
         replay(mock);
         PrimesResult result = target.calcPrimes(1);
@@ -51,7 +52,7 @@ public class SieveOfEratosthenesTest {
     }
 
     @Test
-    public void calcPrimesTwoLength() throws Exception {
+    public void calcPrimesTwoLength() {
         EasyMock.expect(mock.initPrimes(1)).andReturn(new boolean[]{false, false});
         replay(mock);
         PrimesResult result = target.calcPrimes(1);
@@ -61,17 +62,17 @@ public class SieveOfEratosthenesTest {
     }
 
     @Test
-    public void calcPrimesThreeLength() throws Exception {
+    public void calcPrimesThreeLength() {
         EasyMock.expect(mock.initPrimes(3)).andReturn(new boolean[]{false, false, true});
         replay(mock);
         PrimesResult result = target.calcPrimes(3);
         assertFalse(result.getMessages().isEmpty());
-        assertThat(result.getPrimes(),is(Arrays.asList(2)));
+        assertThat(result.getPrimes(),is(Collections.singletonList(2)));
         verify(mock);
     }
 
     @Test
-    public void calcPrimesTenLength() throws Exception {
+    public void calcPrimesTenLength() {
         EasyMock.expect(mock.initPrimes(10)).andReturn(new boolean[]{false, false, true, true, true, true, true, true, true, true});
         replay(mock);
         PrimesResult result = target.calcPrimes(10);

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class HelperTest {
     @Test
-    public void initPrimesZeroLength() throws Exception {
+    public void initPrimesZeroLength() {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(0);
@@ -14,7 +14,7 @@ public class HelperTest {
     }
 
     @Test
-    public void initPrimesOneLength() throws Exception {
+    public void initPrimesOneLength() {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(1);
@@ -22,7 +22,7 @@ public class HelperTest {
     }
 
     @Test
-    public void initPrimesTwoLength() throws Exception {
+    public void initPrimesTwoLength() {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(2);
@@ -30,7 +30,7 @@ public class HelperTest {
     }
 
     @Test
-    public void initPrimesThreeLength() throws Exception {
+    public void initPrimesThreeLength() {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(3);
@@ -38,7 +38,7 @@ public class HelperTest {
     }
 
     @Test
-    public void initPrimesOneHundredLength() throws Exception {
+    public void initPrimesOneHundredLength() {
         Helper target = new Helper();
 
         boolean[] result = target.initPrimes(10);

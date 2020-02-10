@@ -24,7 +24,7 @@ public class SieveOfEratosthenes {
 
     public PrimesResult calcPrimes(final int lastNumber) {
         final ArrayList<String> messages = new ArrayList<>();
-        logInfo(String.format(START__TEXT, START_NUMBER, String.valueOf(lastNumber)), messages);
+        logInfo(String.format(START__TEXT, START_NUMBER, lastNumber), messages);
         logInfo(START_SEIVE, messages);
         final long start = System.nanoTime();
         final boolean[] primes = getHelper().initPrimes(lastNumber);
