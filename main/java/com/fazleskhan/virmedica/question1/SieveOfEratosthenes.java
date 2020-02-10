@@ -2,11 +2,9 @@ package com.fazleskhan.virmedica.question1;
 
 import com.fazleskhan.virmedica.shared.Helper;
 import com.fazleskhan.virmedica.shared.PrimesResult;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service
 public class SieveOfEratosthenes {
 
     private static final String START__TEXT = "Start calculating prime numbers between %s and %s";

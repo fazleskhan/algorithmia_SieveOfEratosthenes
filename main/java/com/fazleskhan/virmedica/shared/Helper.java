@@ -1,10 +1,8 @@
 package com.fazleskhan.virmedica.shared;
 
-import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 
-@Service
+
 public class Helper {
 
     public Helper() {
