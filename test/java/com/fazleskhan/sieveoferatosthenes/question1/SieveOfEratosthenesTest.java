@@ -1,7 +1,7 @@
-package com.fazleskhan.virmedica.question1;
+package com.fazleskhan.sieveoferatosthenes.question1;
 
-import com.fazleskhan.virmedica.shared.Helper;
-import com.fazleskhan.virmedica.shared.PrimesResult;
+import com.fazleskhan.sieveoferatosthenes.shared.Helper;
+import com.fazleskhan.sieveoferatosthenes.shared.PrimesResult;
 import org.easymock.EasyMock;
 import org.easymock.EasyMockRunner;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package com.fazleskhan.virmedica.shared;
+package com.fazleskhan.sieveoferatosthenes.shared;
 
 import org.junit.Assert;
 import org.junit.Test;
