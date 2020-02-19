@@ -16,7 +16,8 @@ public class AlgoSieve {
 
            final PrimesResult result = sieve.calcPrimes(lastNumber);
 
-           final String toReturn = String.format("Sieve of Eratosthenes (last number %s): ",s);
+           final String toReturn = String.format("Sieve of Eratosthenes (last number %s): messages - %s primes - %s",
+                   s, result.getMessages(), result.getPrimes());
            return toReturn;
 
 
