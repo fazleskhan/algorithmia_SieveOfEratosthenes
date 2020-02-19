@@ -4,7 +4,7 @@ import com.fazleskhan.sieveoferatosthenes.*;
 
 public class AlgoSieve {
 
-    private SieveOfEratosthenes sieve;
+    private final SieveOfEratosthenes sieve;
 
     public AlgoSieve(){
         //default constructor
@@ -16,9 +16,8 @@ public class AlgoSieve {
 
            final PrimesResult result = sieve.calcPrimes(lastNumber);
 
-           final String toReturn = String.format("Sieve of Eratosthenes (last number %s): messages - %s primes - %s",
+           return String.format("Sieve of Eratosthenes (last number %s): messages - %s primes - %s",
                    s, result.getMessages(), result.getPrimes());
-           return toReturn;
 
 
         }
