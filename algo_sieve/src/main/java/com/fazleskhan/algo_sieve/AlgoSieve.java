@@ -1,14 +1,24 @@
 package com.fazleskhan.algo_sieve;
 
-import com.algorithmia.*;
-import com.algorithmia.algo.*;
-import com.algorithmia.data.*;
-import com.google.gson.*;
-import java.util.*;
+import com.fazleskhan.sieveoferatosthenes.*;
 
 public class AlgoSieve {
 
-       public String apply(String s) throws Exception {
-            return "Hello " + s;
+    private SieveOfEratosthenes sieve;
+
+    public AlgoSieve(){
+        //default constructor
+        sieve = new SieveOfEratosthenes();
+    }
+
+       public String apply(String s) {
+           final int lastNumber = Integer.parseInt(s);
+
+           final PrimesResult result = sieve.calcPrimes(lastNumber);
+
+           final String toReturn = String.format("Sieve of Eratosthenes (last number %s): ",s);
+           return toReturn;
+
+
         }
 }

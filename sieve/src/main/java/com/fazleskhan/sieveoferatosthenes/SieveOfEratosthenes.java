@@ -27,6 +27,7 @@ public class SieveOfEratosthenes {
     }
 
     public SieveOfEratosthenes(Function<Integer,boolean[]> sieveFactory){
+
         this.sieveFactory = sieveFactory;
     }
 
