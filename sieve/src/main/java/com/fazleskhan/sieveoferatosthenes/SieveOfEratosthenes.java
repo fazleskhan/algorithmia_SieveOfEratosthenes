@@ -13,12 +13,11 @@ public class SieveOfEratosthenes {
     private static final String START_SIEVE = "Start Sieve";
     private static final String NUMBER_PRIMES_TEXT = "Number of primes found %s";
 
-    private final Function<Integer,boolean[]> sieveFactory;
+    private final Function<Integer, boolean[]> sieveFactory;
 
 
     /**
      * https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-     *
      */
     @SuppressWarnings("unused")
     public SieveOfEratosthenes() {
@@ -26,9 +25,27 @@ public class SieveOfEratosthenes {
         this.sieveFactory = SieveOfEratosthenes::initPrimes;
     }
 
-    public SieveOfEratosthenes(Function<Integer,boolean[]> sieveFactory){
+    public SieveOfEratosthenes(Function<Integer, boolean[]> sieveFactory) {
 
         this.sieveFactory = sieveFactory;
+    }
+
+    public static boolean[] initPrimes(final int end) {
+
+        final boolean[] primes = new boolean[end];
+        Arrays.fill(primes, true);
+        switch (end) {
+            case 0:  //return zero element array
+                break;
+            case 1:  //return single element array
+                primes[0] = false;
+                break;
+            default:
+                primes[0] = false;
+                primes[1] = false;
+                break;
+        }
+        return primes;
     }
 
     public PrimesResult calcPrimes(final int lastNumber) {
@@ -61,24 +78,6 @@ public class SieveOfEratosthenes {
 
     private void logInfo(final String message, final ArrayList<String> messages) {
         messages.add(message);
-    }
-
-    public static boolean[] initPrimes(final int end) {
-
-        final boolean[] primes = new boolean[end];
-        Arrays.fill(primes, true);
-        switch (end) {
-            case 0:  //return zero element array
-                break;
-            case 1:  //return single element array
-                primes[0] = false;
-                break;
-            default:
-                primes[0] = false;
-                primes[1] = false;
-                break;
-        }
-        return primes;
     }
 
 }

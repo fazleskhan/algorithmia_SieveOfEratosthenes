@@ -9,7 +9,7 @@ import static org.junit.Assert.fail;
 public class AlgoSieveTests {
 
     @Test
-    public void zeroLastNumber(){
+    public void zeroLastNumber() {
         AlgoSieve target = new AlgoSieve();
 
         String result = target.apply("0");
@@ -19,7 +19,7 @@ public class AlgoSieveTests {
     }
 
     @Test
-    public void oneHundredLastNumber(){
+    public void oneHundredLastNumber() {
         AlgoSieve target = new AlgoSieve();
 
         String result = target.apply("100");
@@ -29,49 +29,49 @@ public class AlgoSieveTests {
     }
 
     @Test
-    public void nullLastNumber(){
+    public void nullLastNumber() {
         AlgoSieve target = new AlgoSieve();
 
-        try{
+        try {
             target.apply(null);
             fail("A number format exception expected");
-        }catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             //success
         }
     }
 
     @Test
-    public void emptyStringLastNumber(){
+    public void emptyStringLastNumber() {
         AlgoSieve target = new AlgoSieve();
 
-        try{
+        try {
             target.apply("");
             fail("A number format exception expected");
-        }catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             //success
         }
     }
 
     @Test
-    public void nonNumberLastNumber(){
+    public void nonNumberLastNumber() {
         AlgoSieve target = new AlgoSieve();
 
-        try{
+        try {
             target.apply("a");
             fail("A number format exception expected");
-        }catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             //success
         }
     }
 
     @Test
-    public void decimalLastNumber(){
+    public void decimalLastNumber() {
         AlgoSieve target = new AlgoSieve();
 
-        try{
+        try {
             target.apply("1.1");
             fail("A number format exception expected");
-        }catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             //success
         }
     }

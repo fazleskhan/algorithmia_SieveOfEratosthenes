@@ -20,7 +20,7 @@ public class SieveOfEratosthenesTest {
 
     private SieveOfEratosthenes target;
 
-    private Function<Integer,boolean[]> mock;
+    private Function<Integer, boolean[]> mock;
 
     @Before
     public void setUp() {
@@ -64,7 +64,7 @@ public class SieveOfEratosthenesTest {
         replay(mock);
         PrimesResult result = target.calcPrimes(3);
         assertFalse(result.getMessages().isEmpty());
-        assertThat(result.getPrimes(),is(Collections.singletonList(2)));
+        assertThat(result.getPrimes(), is(Collections.singletonList(2)));
         verify(mock);
     }
 
@@ -74,7 +74,7 @@ public class SieveOfEratosthenesTest {
         replay(mock);
         PrimesResult result = target.calcPrimes(10);
         assertFalse(result.getMessages().isEmpty());
-        assertThat(result.getPrimes(),is(Arrays.asList(2, 3, 5, 7)));
+        assertThat(result.getPrimes(), is(Arrays.asList(2, 3, 5, 7)));
         verify(mock);
     }
 }
