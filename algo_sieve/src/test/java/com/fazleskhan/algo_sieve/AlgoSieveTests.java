@@ -52,4 +52,16 @@ public class AlgoSieveTests {
         }
     }
 
+    @Test
+    public void NonNumberLastNumber(){
+        AlgoSieve target = new AlgoSieve();
+
+        try{
+            target.apply("a");
+            fail("A number format exception expected");
+        }catch(NumberFormatException nfe){
+            //success
+        }
+    }
+
 }
