@@ -40,4 +40,16 @@ public class AlgoSieveTests {
         }
     }
 
+    @Test
+    public void EmptyStringLastNumber(){
+        AlgoSieve target = new AlgoSieve();
+
+        try{
+            target.apply("");
+            fail("A number format exception expected");
+        }catch(NumberFormatException nfe){
+            //success
+        }
+    }
+
 }
