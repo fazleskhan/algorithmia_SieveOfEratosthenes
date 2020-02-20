@@ -1,6 +1,5 @@
 package algorithmia.algorithmia_SieveOfEratosthenes;
 
-import algorithmia.algorithmia_SieveOfEratosthenes.algorithmia_SieveOfEratosthenes;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.matchesPattern;
