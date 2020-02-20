@@ -34,8 +34,8 @@ public class algorithmiaSieveOfEratosthenesTests {
 
         try {
             target.apply(null);
-            fail("A number format exception expected");
-        } catch (NumberFormatException nfe) {
+            fail("NullPointer exception expected");
+        } catch (NullPointerException npe) {
             //success
         }
     }
@@ -46,8 +46,8 @@ public class algorithmiaSieveOfEratosthenesTests {
 
         try {
             target.apply(new InputParams(null));
-            fail("A number format exception expected");
-        } catch (NumberFormatException nfe) {
+            fail("NullPointer exception expected");
+        } catch (NullPointerException npe) {
             //success
         }
     }
