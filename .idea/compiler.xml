@@ -14,7 +14,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="algo_sieve" options="-Xlint:unchecked" />
       <module name="algorithmia_SieveOfEratosthenes" options="" />
+      <module name="sieve" options="-Xlint:unchecked" />
     </option>
   </component>
 </project>
