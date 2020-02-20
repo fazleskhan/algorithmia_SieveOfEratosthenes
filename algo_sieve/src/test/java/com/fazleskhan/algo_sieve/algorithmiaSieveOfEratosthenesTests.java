@@ -1,16 +1,17 @@
 package com.fazleskhan.algo_sieve;
 
+import algorithmia.algorithmia_SieveOfEratosthenes.algorithmia_SieveOfEratosthenes;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.matchesPattern;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-public class AlgoSieveTests {
+public class algorithmiaSieveOfEratosthenesTests {
 
     @Test
     public void zeroLastNumber() {
-        AlgoSieve target = new AlgoSieve();
+        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         String result = target.apply("0");
         assertThat(result, matchesPattern(
@@ -20,7 +21,7 @@ public class AlgoSieveTests {
 
     @Test
     public void oneHundredLastNumber() {
-        AlgoSieve target = new AlgoSieve();
+        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         String result = target.apply("100");
         assertThat(result, matchesPattern(
@@ -30,7 +31,7 @@ public class AlgoSieveTests {
 
     @Test
     public void nullLastNumber() {
-        AlgoSieve target = new AlgoSieve();
+        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         try {
             target.apply(null);
@@ -42,7 +43,7 @@ public class AlgoSieveTests {
 
     @Test
     public void emptyStringLastNumber() {
-        AlgoSieve target = new AlgoSieve();
+        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         try {
             target.apply("");
@@ -54,7 +55,7 @@ public class AlgoSieveTests {
 
     @Test
     public void nonNumberLastNumber() {
-        AlgoSieve target = new AlgoSieve();
+        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         try {
             target.apply("a");
@@ -66,7 +67,7 @@ public class AlgoSieveTests {
 
     @Test
     public void decimalLastNumber() {
-        AlgoSieve target = new AlgoSieve();
+        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         try {
             target.apply("1.1");

@@ -1,13 +1,13 @@
-package com.fazleskhan.algo_sieve;
+package algorithmia.algorithmia_SieveOfEratosthenes;
 
 import com.fazleskhan.sieveoferatosthenes.PrimesResult;
 import com.fazleskhan.sieveoferatosthenes.SieveOfEratosthenes;
 
-public class AlgoSieve {
+public class algorithmia_SieveOfEratosthenes {
 
     private final SieveOfEratosthenes sieve;
 
-    public AlgoSieve() {
+    public algorithmia_SieveOfEratosthenes() {
         //default constructor
         sieve = new SieveOfEratosthenes();
     }
