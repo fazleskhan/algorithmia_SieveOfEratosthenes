@@ -1,4 +1,4 @@
-package com.fazleskhan.algo_sieve;
+package algorithmia.algorithmia_SieveOfEratosthenes;
 
 import algorithmia.algorithmia_SieveOfEratosthenes.algorithmia_SieveOfEratosthenes;
 import org.junit.Test;
