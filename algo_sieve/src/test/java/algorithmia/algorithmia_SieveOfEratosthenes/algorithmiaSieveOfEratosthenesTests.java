@@ -12,7 +12,7 @@ public class algorithmiaSieveOfEratosthenesTests {
     public void zeroLastNumber() {
         algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
-        String result = target.apply("0");
+        String result = target.apply(new InputParams(0));
         assertThat(result, matchesPattern(
                 "Sieve of Eratosthenes \\(last number 0\\): messages - \\[Start calculating prime numbers between 1 and 0, Start Sieve, Number of primes found 0, Sieve took \\d* ms\\] primes - \\[\\]"
         ));
@@ -22,14 +22,14 @@ public class algorithmiaSieveOfEratosthenesTests {
     public void oneHundredLastNumber() {
         algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
-        String result = target.apply("100");
+        String result = target.apply(new InputParams(100));
         assertThat(result, matchesPattern(
                 "Sieve of Eratosthenes \\(last number 100\\): messages - \\[Start calculating prime numbers between 1 and 100, Start Sieve, Number of primes found 25, Sieve took \\d* ms\\] primes - \\[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97\\]"
         ));
     }
 
     @Test
-    public void nullLastNumber() {
+    public void nullInputParam() {
         algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         try {
@@ -41,39 +41,14 @@ public class algorithmiaSieveOfEratosthenesTests {
     }
 
     @Test
-    public void emptyStringLastNumber() {
+    public void nullLastNumber() {
         algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
         try {
-            target.apply("");
+            target.apply(new InputParams(null));
             fail("A number format exception expected");
         } catch (NumberFormatException nfe) {
             //success
         }
     }
-
-    @Test
-    public void nonNumberLastNumber() {
-        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
-
-        try {
-            target.apply("a");
-            fail("A number format exception expected");
-        } catch (NumberFormatException nfe) {
-            //success
-        }
-    }
-
-    @Test
-    public void decimalLastNumber() {
-        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
-
-        try {
-            target.apply("1.1");
-            fail("A number format exception expected");
-        } catch (NumberFormatException nfe) {
-            //success
-        }
-    }
-
 }
