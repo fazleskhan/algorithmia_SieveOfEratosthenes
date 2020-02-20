@@ -189,8 +189,6 @@ ivy
 dist
 logs
 
-*.class
-
 /project/target
 
 algorithm.zip
