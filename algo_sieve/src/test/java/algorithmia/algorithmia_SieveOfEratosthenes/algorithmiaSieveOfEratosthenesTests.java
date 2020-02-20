@@ -12,9 +12,9 @@ public class algorithmiaSieveOfEratosthenesTests {
     public void zeroLastNumber() {
         algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
-        String result = target.apply(new InputParams(0));
-        assertThat(result, matchesPattern(
-                "Sieve of Eratosthenes \\(last number 0\\): messages - \\[Start calculating prime numbers between 1 and 0, Start Sieve, Number of primes found 0, Sieve took \\d* ms\\] primes - \\[\\]"
+        OutputParams result = target.apply(new InputParams(0));
+        assertThat(result.toString(), matchesPattern(
+                "OutputParams\\{primes=\\[\\], messages=\\[Start calculating prime numbers between 1 and 0, Start Sieve, Number of primes found 0, Sieve took \\d* ms\\]\\}"
         ));
     }
 
@@ -22,9 +22,9 @@ public class algorithmiaSieveOfEratosthenesTests {
     public void oneHundredLastNumber() {
         algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
 
-        String result = target.apply(new InputParams(100));
-        assertThat(result, matchesPattern(
-                "Sieve of Eratosthenes \\(last number 100\\): messages - \\[Start calculating prime numbers between 1 and 100, Start Sieve, Number of primes found 25, Sieve took \\d* ms\\] primes - \\[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97\\]"
+        OutputParams result = target.apply(new InputParams(100));
+        assertThat(result.toString(), matchesPattern(
+                "OutputParams\\{primes=\\[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97\\], messages=\\[Start calculating prime numbers between 1 and 100, Start Sieve, Number of primes found 25, Sieve took \\d* ms\\]\\}"
         ));
     }
 

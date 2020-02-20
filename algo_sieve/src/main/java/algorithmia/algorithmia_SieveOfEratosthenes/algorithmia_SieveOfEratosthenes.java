@@ -12,13 +12,11 @@ public class algorithmia_SieveOfEratosthenes {
         sieve = new SieveOfEratosthenes();
     }
 
-    public String apply(InputParams inputParams) {
+    public OutputParams apply(InputParams inputParams) {
         final int lastNumber = inputParams.getLastNumber();
 
         final PrimesResult result = sieve.calcPrimes(lastNumber);
 
-        return String.format("Sieve of Eratosthenes (last number %s): messages - %s primes - %s",
-                lastNumber, result.getMessages(), result.getPrimes());
-
+        return new OutputParams(result.getPrimes(),result.getMessages());
     }
 }
