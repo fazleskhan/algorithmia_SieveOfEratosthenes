@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="algo_sieve" />
         <module name="sieve" />
+        <module name="algo_sieve" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
