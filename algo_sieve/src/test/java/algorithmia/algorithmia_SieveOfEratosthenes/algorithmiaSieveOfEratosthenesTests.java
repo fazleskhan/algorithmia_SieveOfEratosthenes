@@ -41,16 +41,4 @@ public class algorithmiaSieveOfEratosthenesTests {
             //success
         }
     }
-
-    @Test
-    public void nullLastNumber() {
-        algorithmia_SieveOfEratosthenes target = new algorithmia_SieveOfEratosthenes();
-
-        try {
-            target.apply(new InputParams());
-            fail("NullPointer exception expected");
-        } catch (NullPointerException npe) {
-            //success
-        }
-    }
 }
